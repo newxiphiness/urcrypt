@@ -36,6 +36,11 @@ void urcrypt_ed_sign(const uint8_t *message,
                      size_t length,
                      const uint8_t seed[32],
                      uint8_t out[64]);
+void urcrypt_ed_sign_raw(const uint8_t *message,
+                size_t length,
+                const uint8_t public[32],
+		const uint8_t private[64],
+                uint8_t out[64]);
 void urcrypt_ed_add_scalar_private(const uint8_t private[64], const uint8_t scalar[32], uint8_t out[64]);
 void urcrypt_ed_add_scalar_public(const uint8_t public[32], const uint8_t scalar[32], uint8_t out[32]);
 void urcrypt_ed_add_scalar_public_private(const uint8_t public[32],
@@ -43,11 +48,6 @@ void urcrypt_ed_add_scalar_public_private(const uint8_t public[32],
                            const uint8_t scalar[32],
                            uint8_t public_out[32],
                            uint8_t private_out[64]);
-void urcrypt_ed_raw_sign(const uint8_t *message,
-                size_t length,
-                const uint8_t public[32],
-		const uint8_t private[64],
-                uint8_t out[64]);
 // return value means the signature was (not) verified
 bool urcrypt_ed_veri(const uint8_t *message,
                      size_t length,
@@ -190,7 +190,6 @@ int urcrypt_blake2(size_t message_length,
 void urcrypt_blake3_hash(size_t message_length,
                          uint8_t *message,
                          uint8_t key[32],
-                         uint8_t flags,
                          size_t out_length,
                          uint8_t *out);
 
@@ -209,19 +208,6 @@ void urcrypt_blake3_compress(uint8_t cv[32],
                              uint8_t flags,
                              uint8_t out[64]);
 
-
-void urcrypt_chacha_crypt(size_t rounds,
-                          uint8_t key[32],
-                          uint8_t nonce[8],
-                          uint64_t counter,
-                          size_t message_length,
-                          uint8_t *message);
-
-void urcrypt_chacha_xchacha(size_t rounds,
-                            uint8_t key[32],
-                            uint8_t nonce[24],
-                            uint8_t out_key[32],
-                            uint8_t out_nonce[8]);
 
 /* there is some long-term context associated with the secp library
  * (precomputed tables, etc), so secp functions require a context object
