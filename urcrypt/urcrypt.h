@@ -29,6 +29,9 @@ int urcrypt_ed_add_double_scalarmult(const uint8_t a[32],
 
 void urcrypt_ed_puck(const uint8_t seed[32],
                      uint8_t out[32]);
+void urcrypt_ed_luck(const uint8_t seed[32],
+                uint8_t public_out[32],
+		uint8_t private_out[64]);
 void urcrypt_ed_shar(const uint8_t public[32],
                      const uint8_t seed[32],
                      uint8_t out[32]);

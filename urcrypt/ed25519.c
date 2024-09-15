@@ -11,6 +11,16 @@ urcrypt_ed_puck(const uint8_t seed[32],
 }
 
 void
+urcrypt_ed_luck(const uint8_t seed[32],
+                uint8_t public_out[32],
+		uint8_t private_out[64])
+{
+  memset(public_out, 0, 32); 
+  memset(private_out, 0, 64); 
+  ed25519_create_keypair(public_out, private_out, seed);
+}
+
+void
 urcrypt_ed_shar(const uint8_t public[32],
                 const uint8_t seed[32],
                 uint8_t out[32])
