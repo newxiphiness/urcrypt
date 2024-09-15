@@ -26,7 +26,7 @@ urcrypt_ed_shar(const uint8_t public[32],
 }
 
 void
-urcrypt_ed_raw_sign(const uint8_t *message,
+urcrypt_ed_sign_raw(const uint8_t *message,
                 size_t length,
                 const uint8_t public[32],
 		const uint8_t private[64],
