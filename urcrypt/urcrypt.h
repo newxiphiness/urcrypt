@@ -48,13 +48,11 @@ void urcrypt_ed_sign(const uint8_t *message,
 void urcrypt_ed_add_scalar_private(const uint8_t private[64], const uint8_t scalar[32], uint8_t out[64]);
 void urcrypt_ed_add_scalar_public(const uint8_t public[32], const uint8_t scalar[32], uint8_t out[32]);
 
-void
-urcrypt_ed_add_scalar_public_private(const uint8_t public[32],
+void urcrypt_ed_add_scalar_public_private(const uint8_t public[32],
                            const uint8_t private[64],
                            const uint8_t scalar[32],
                            uint8_t public_out[32],
-                           uint8_t private_out[64])
-
+                           uint8_t private_out[64]);
 // return value means the signature was (not) verified
 bool urcrypt_ed_veri(const uint8_t *message,
                      size_t length,
