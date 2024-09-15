@@ -74,7 +74,7 @@ urcrypt_ed_add_scalar_public_private(const uint8_t public[32],
 {
   memcpy(public_out, public, 32);
   memcpy(private_out, private, 32);
-  ed25519_add_scalar(public_out, private_out, scalar)
+  ed25519_add_scalar(public_out, private_out, scalar);
 }
 
 bool
